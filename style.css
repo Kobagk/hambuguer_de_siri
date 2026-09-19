@@ -1,0 +1,400 @@
+/* style.css */
+:root {
+    --ocean-top: #00a8e8;
+    --ocean-mid: #0077b6;
+    --ocean-deep: #023e8a;
+    --sand-color: #fef08a;
+    
+    --text-primary: #ffffff;
+    --text-secondary: #e0f2fe;
+    --text-muted: #bae6fd;
+    
+    --accent-yellow: #facc15;
+    --accent-cyan: #38bdf8;
+    
+    --status-success: #4ade80;
+    --status-success-bg: rgba(74, 222, 128, 0.2);
+    --status-error: #f87171;
+    --status-error-bg: rgba(248, 113, 113, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka', 'Quicksand', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--ocean-top) 0%, var(--ocean-mid) 45%, var(--ocean-deep) 100%);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Fundo da Fenda do Bikini Baseado na Imagem de Referência */
+.bikini-bottom-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Raios Solares Submarinos */
+.light-ray {
+    position: absolute;
+    top: -50%;
+    left: 20%;
+    width: 260px;
+    height: 200%;
+    background: linear-gradient(90deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%);
+    transform: rotate(-25deg);
+    animation: rayShift 10s infinite alternate ease-in-out;
+}
+
+.light-ray.secondary {
+    left: 65%;
+    width: 180px;
+    animation-delay: -5s;
+    opacity: 0.6;
+}
+
+@keyframes rayShift {
+    from { transform: rotate(-28deg) translateX(-20px); }
+    to { transform: rotate(-22deg) translateX(20px); }
+}
+
+/* Flores do Céu */
+.sky-flower {
+    position: absolute;
+    width: 220px;
+    animation: floatFlower 20s infinite alternate ease-in-out;
+}
+
+.flower-1 { top: 6%; left: 10%; }
+.flower-2 { top: 12%; right: 8%; animation-delay: -6s; }
+.flower-3 { bottom: 25%; left: 5%; animation-delay: -12s; width: 160px; }
+
+@keyframes floatFlower {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    100% { transform: translate(40px, 20px) rotate(12deg) scale(1.05); }
+}
+
+/* Chão de Areia e Algas */
+.sand-floor {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 18vh;
+    background: linear-gradient(180deg, #fde047 0%, #eab308 100%);
+    border-top: 4px solid #ca8a04;
+    border-radius: 50% 50% 0 0 / 15px 15px 0 0;
+}
+
+.seaweed {
+    position: absolute;
+    bottom: 15vh;
+    width: 16px;
+    height: 120px;
+    background: #65a30d;
+    border-radius: 20px;
+    animation: sway 4s infinite alternate ease-in-out;
+    transform-origin: bottom center;
+}
+
+.seaweed-left { left: 8%; }
+.seaweed-right { right: 12%; animation-delay: -2s; height: 150px; }
+
+@keyframes sway {
+    from { transform: rotate(-8deg); }
+    to { transform: rotate(12deg); }
+}
+
+/* Placa Boia "Bikini Bottom" */
+.bikini-sign {
+    position: absolute;
+    bottom: 12vh;
+    right: 6%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lifebuoy {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #38bdf8 40%, #ea580c 41%, #ea580c 60%, #ffffff 61%);
+    border: 4px solid #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #000;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    transform: rotate(12deg);
+}
+
+.sign-post {
+    width: 8px;
+    height: 60px;
+    background: #78350f;
+    border: 2px solid #000;
+    margin-top: -10px;
+}
+
+/* Bolhas Submarinas */
+.bubbles-container { position: absolute; inset: 0; }
+
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.2));
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.8);
+    animation: riseUp linear infinite;
+}
+
+@keyframes riseUp {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(-110vh) translateX(40px); opacity: 0; }
+}
+
+/* Patrick Seguidor do Cursor */
+.mascot-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    pointer-events: none;
+    will-change: transform;
+    transition: transform 0.08s ease-out;
+}
+
+.patrick-svg {
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+    transition: transform 0.2s ease;
+}
+
+/* Liquid Glass com Textura Praiana */
+.liquid-glass {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(28px) saturate(220%);
+    -webkit-backdrop-filter: blur(28px) saturate(220%);
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    border-top: 2.5px solid rgba(255, 255, 255, 0.6);
+    border-left: 2.5px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 30px 60px rgba(2, 40, 90, 0.6),
+                inset 0 2px 6px rgba(255, 255, 255, 0.4),
+                inset 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 440px;
+    border-radius: 28px;
+    padding: 40px;
+}
+
+.card-header {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-yellow);
+    margin-bottom: 12px;
+}
+
+.brand-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-yellow);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-yellow);
+}
+
+/* Tipografia de Praia/Mar */
+h1 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    background: linear-gradient(180deg, #ffffff 20%, #fef08a 80%, #facc15 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    margin-bottom: 8px;
+}
+
+p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.full-width { grid-column: span 2; }
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.input-container input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 14px;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.input-container input::placeholder { color: var(--text-muted); opacity: 0.8; }
+
+.input-container input:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--accent-yellow);
+    box-shadow: 0 0 20px rgba(250, 204, 21, 0.4);
+}
+
+.btn-primary {
+    grid-column: span 2;
+    margin-top: 10px;
+    padding: 14px;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 14px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.25s ease;
+    box-shadow: 0 8px 20px rgba(2, 132, 199, 0.5);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+    box-shadow: 0 12px 25px rgba(56, 189, 248, 0.6);
+    transform: translateY(-2px);
+}
+
+.hidden { display: none !important; }
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 30, 70, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modal-dialog {
+    border-radius: 24px;
+    padding: 32px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    animation: modalPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-status-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+}
+
+.modal-dialog.success .modal-status-icon {
+    background-color: var(--status-success-bg);
+    color: var(--status-success);
+    border: 1.5px solid var(--status-success);
+}
+
+.modal-dialog.error .modal-status-icon {
+    background-color: var(--status-error-bg);
+    color: var(--status-error);
+    border: 1.5px solid var(--status-error);
+}
+
+.modal-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.modal-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+
+.btn-secondary {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.22); }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalPop { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }

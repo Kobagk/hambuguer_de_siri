@@ -1,0 +1,156 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Elegibilidade | Fenda do Bikini</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Fundo Temático Fenda do Bikini com Areia, Flores de Coral, Raios de Sol e Placa de Boia -->
+    <div class="bikini-bottom-bg">
+        <div class="light-ray"></div>
+        <div class="light-ray secondary"></div>
+
+        <!-- Flores do Céu Submarino -->
+        <svg class="sky-flower flower-1" viewBox="0 0 100 100">
+            <path d="M 50 20 C 55 5, 75 5, 75 25 C 90 25, 90 45, 80 55 C 90 65, 80 85, 65 80 C 55 95, 35 90, 35 75 C 20 80, 5 65, 15 50 C 0 40, 10 20, 25 25 C 30 10, 45 10, 50 20 Z" fill="#c084fc" opacity="0.6"/>
+        </svg>
+        <svg class="sky-flower flower-2" viewBox="0 0 100 100">
+            <path d="M 50 20 C 55 5, 75 5, 75 25 C 90 25, 90 45, 80 55 C 90 65, 80 85, 65 80 C 55 95, 35 90, 35 75 C 20 80, 5 65, 15 50 C 0 40, 10 20, 25 25 C 30 10, 45 10, 50 20 Z" fill="#fb7185" opacity="0.6"/>
+        </svg>
+        <svg class="sky-flower flower-3" viewBox="0 0 100 100">
+            <path d="M 50 20 C 55 5, 75 5, 75 25 C 90 25, 90 45, 80 55 C 90 65, 80 85, 65 80 C 55 95, 35 90, 35 75 C 20 80, 5 65, 15 50 C 0 40, 10 20, 25 25 C 30 10, 45 10, 50 20 Z" fill="#38bdf8" opacity="0.5"/>
+        </svg>
+
+        <!-- Elementos do Fundo do Mar -->
+        <div class="sand-floor"></div>
+        <div class="seaweed seaweed-left"></div>
+        <div class="seaweed seaweed-right"></div>
+        
+        <!-- Placa de Boia "Bikini Bottom" -->
+        <div class="bikini-sign">
+            <div class="lifebuoy">
+                <span>BIKINI</span>
+                <span>BOTTOM</span>
+            </div>
+            <div class="sign-post"></div>
+        </div>
+
+        <div id="bubblesContainer" class="bubbles-container"></div>
+    </div>
+
+    <!-- Mascote Patrick Estrela Fiel que Segue o Cursor -->
+    <div id="mascotFollower" class="mascot-follower">
+        <svg viewBox="0 0 100 120" width="80" height="96" class="patrick-svg">
+            <defs>
+                <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ff9eb5" />
+                    <stop offset="100%" stop-color="#ff537b" />
+                </linearGradient>
+                <linearGradient id="pantsGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#bbf7d0" />
+                    <stop offset="100%" stop-color="#22c55e" />
+                </linearGradient>
+            </defs>
+
+            <!-- Corpo de Estrela -->
+            <path d="M 50 5 
+                     C 53 18, 55 25, 62 38 
+                     C 74 36, 85 38, 95 44 
+                     C 88 55, 78 62, 73 72 
+                     C 80 84, 84 94, 78 112 
+                     C 66 106, 58 98, 50 94 
+                     C 42 98, 34 106, 22 112 
+                     C 16 94, 20 84, 27 72 
+                     C 22 62, 12 55, 5 44 
+                     C 15 38, 26 36, 38 38 
+                     C 45 25, 47 18, 50 5 Z" 
+                  fill="url(#bodyGrad)" stroke="#e11d48" stroke-width="1.8" stroke-linejoin="round"/>
+
+            <!-- Bermuda Verde Floral -->
+            <path d="M 27 72 C 38 76, 62 76, 73 72 C 78 84, 84 94, 78 112 C 66 106, 58 98, 50 94 C 42 98, 34 106, 22 112 C 16 94, 20 84, 27 72 Z" 
+                  fill="url(#pantsGrad)" stroke="#15803d" stroke-width="1.2"/>
+            
+            <!-- Estampa das Flores Roxas na Bermuda -->
+            <path d="M 32 85 C 30 80, 36 80, 34 85 C 38 88, 32 92, 32 85 Z" fill="#a855f7"/>
+            <path d="M 65 88 C 63 83, 69 83, 67 88 C 71 91, 65 95, 65 88 Z" fill="#a855f7"/>
+
+            <!-- Umbigo -->
+            <path d="M 48 64 Q 50 67 52 64" fill="none" stroke="#be123c" stroke-width="1.8" stroke-linecap="round"/>
+
+            <!-- Olhos Grandes -->
+            <ellipse cx="44" cy="30" rx="5.5" ry="8" fill="#ffffff" stroke="#000" stroke-width="1"/>
+            <ellipse cx="56" cy="30" rx="5.5" ry="8" fill="#ffffff" stroke="#000" stroke-width="1"/>
+            <circle cx="45.5" cy="30" r="2.2" fill="#0f172a"/>
+            <circle cx="54.5" cy="30" r="2.2" fill="#0f172a"/>
+
+            <!-- Sobrancelhas "Z" Típicas -->
+            <path d="M 37 19 L 46 19 L 39 22 L 48 22" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M 52 22 L 61 22 L 54 19 L 63 19" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
+
+            <!-- Sorriso Bobo -->
+            <path d="M 41 42 Q 50 51 59 42" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+    <!-- Card Principal em Estilo Liquid Glass -->
+    <main class="card-container liquid-glass">
+        <header class="card-header">
+            <div class="brand">
+                <span class="brand-dot"></span>
+                <span>Bikini Bottom Recruitment</span>
+            </div>
+            <h1>Pré-Triagem de Candidato</h1>
+            <p>Insira seus dados para verificação instantânea dos requisitos operacionais da posição.</p>
+        </header>
+
+        <form id="vagaForm" class="form-grid">
+            <div class="form-group full-width">
+                <label for="nome">Nome Completo</label>
+                <div class="input-container">
+                    <input type="text" id="nome" placeholder="Digite seu nome" required autocomplete="off">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="idade">Idade (anos)</label>
+                <div class="input-container">
+                    <input type="number" id="idade" placeholder="Ex: 22" min="0" max="120" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="altura">Altura (m)</label>
+                <div class="input-container">
+                    <input type="number" id="altura" placeholder="Ex: 1.75" step="0.01" min="0" max="3.0" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary">
+                <span>Analisar Requisitos</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </form>
+    </main>
+
+    <!-- Modal Pop-up Pop-in em Liquid Glass -->
+    <div id="modalOverlay" class="modal-backdrop hidden">
+        <div class="modal-dialog liquid-glass">
+            <div id="modalIcon" class="modal-status-icon"></div>
+            <h2 id="modalTitle" class="modal-title"></h2>
+            <p id="modalMessage" class="modal-description"></p>
+            <button id="closeModal" class="btn-secondary">Confirmar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
